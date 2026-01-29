@@ -52,7 +52,13 @@ footer {
   text-align: center;
   margin-top: 2rem;
 }
-
+.profile-pic {
+  max-width: 180px;
+  height: auto;
+  border-radius: 50%;
+  border: 6px solid #ff8f7a;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
 .floating-text {
   color: #800000;
   font-family: 'Arial', sans-serif;
