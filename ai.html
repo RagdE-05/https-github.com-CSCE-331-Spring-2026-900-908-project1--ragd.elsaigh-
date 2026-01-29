@@ -3,109 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <title>Ragd Elsaigh: AI Dessert Page</title>
+  <link id="themeStylesheet" rel="stylesheet" href="style1.css">
+  <script src="controller.js" defer></script>
 </head>
 
-<body style="margin:0; font-family:'Comic Sans MS', cursive, sans-serif; background:#fff7f5; color:#4a0f0f;">
-
-  <!-- Header -->
-  <header style="background:#500000; padding:1rem;">
-    <nav class="nav" style="display:flex; gap:1rem;">
-      <a href="landing.html" style="color:white; text-decoration:none;">Landing</a>
-      <a href="portfolio.html" style="color:white; text-decoration:none;">Portfolio</a>
-      <a href="qualifications.html" style="color:white; text-decoration:none;">Qualifications</a>
-      <a href="services.html" style="color:white; text-decoration:none;">Services</a>
-      <span style="color:white; font-weight:bold;">AI Page</span>
+<body class="ai-body">
+  <header>
+    <nav class="nav">
+      <a href="landing.html">Landing</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="qualifications.html">Qualifications</a>
+      <a href="services.html">Services</a>
+      <span class="current-page">AI Page</span>
+      <button id="styleToggle">Other Style</button>
     </nav>
   </header>
 
-  <!-- Main Content -->
-  <main style="max-width:900px; margin:2rem auto; background:white; padding:2rem; border-radius:20px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-
-    <h1 style="text-align:center; color:#500000; font-size:3rem; margin-top:0;">🍰 Dessert Wonderland 🍰</h1>
-    <p style="text-align:center; font-size:1.2rem; color:#7a2e2e;">
+  <main class="ai-container">
+    <h1 class="ai-title">🍰 Dessert Wonderland 🍰</h1>
+    <p class="ai-subtitle">
       A bubbly, sweet little corner of the internet dedicated to my favorite desserts!
     </p>
 
-    <!-- 3D Cupcake -->
-    <section style="margin:2rem auto; text-align:center;">
-      <div style="
-        width:180px; 
-        height:220px; 
-        margin:auto;
-        background:linear-gradient(to bottom, #ffb6a9, #ff8f7a);
-        border-radius:20px;
-        position:relative;
-        box-shadow:0 8px 20px rgba(0,0,0,0.2);
-        transform: perspective(600px) rotateX(10deg);
-      ">
-        <div style="
-          width:200px;
-          height:120px;
-          background:#ffe3df;
-          border-radius:100px 100px 0 0;
-          position:absolute;
-          top:-60px;
-          left:-10px;
-          box-shadow:0 4px 10px rgba(0,0,0,0.15);
-        "></div>
-        <span style="position:absolute; top:-40px; left:70px; font-size:2rem;">🍒</span>
-      </div>
-      <p style="margin-top:1rem; font-size:1.1rem; color:#7a2e2e;">A cute 3D‑style cupcake to set the mood!</p>
+    <!-- Embedded Cupcake -->
+    <section class="cupcake-section">
+      <img src="Projectmodel.png" alt="Cupcake Visual" class="center-image" style="max-width:180px; border-radius:20px; box-shadow:0 4px 10px rgba(0,0,0,0.2);">
+      <p class="cupcake-caption">A cute cupcake to set the mood!</p>
     </section>
 
-    <!-- Dessert Sections -->
-    <section style="margin-top:3rem;">
-      <h2 style="color:#500000; font-size:2rem;">🥮 Cinnamon Rolls</h2>
-      <p>Soft, gooey, warm spirals of cinnamon sugar goodness. Perfect with a glaze drizzle!</p>
-      <p><strong>Recipe:</strong> Roll out dough → spread butter + cinnamon sugar → roll + slice → bake → glaze.</p>
-      <p style="font-size:2rem;">🌀🍯✨</p>
+    <!-- Desserts -->
+    <section class="dessert">
+      <h2>🥮 Cinnamon Rolls</h2>
+      <p>Soft, gooey spirals of cinnamon sugar goodness.</p>
+      <p><strong>Recipe:</strong> Roll dough → spread cinnamon sugar → slice → bake → glaze.</p>
+      <p class="emoji">🌀🍯✨</p>
     </section>
 
-    <section style="margin-top:3rem;">
-      <h2 style="color:#500000; font-size:2rem;">🍫 Brownies</h2>
-      <p>Rich, fudgy, chocolatey squares of happiness. Best served warm with ice cream.</p>
-      <p><strong>Recipe:</strong> Melt butter + chocolate → mix with sugar + eggs → add flour → bake until gooey.</p>
-      <p style="font-size:2rem;">🍫🤎🍨</p>
+    <section class="dessert">
+      <h2>🍫 Brownies</h2>
+      <p>Rich, fudgy, chocolatey squares of happiness.</p>
+      <p><strong>Recipe:</strong> Melt chocolate → mix → bake until gooey.</p>
+      <p class="emoji">🍫🤎🍨</p>
     </section>
 
-    <section style="margin-top:3rem;">
-      <h2 style="color:#500000; font-size:2rem;">❤️ Red Velvet Cake</h2>
-      <p>Moist, vibrant red cake with a hint of cocoa and the BEST cream cheese frosting.</p>
-      <p><strong>Recipe:</strong> Mix cocoa + buttermilk + red coloring → add flour + sugar → bake → frost generously.</p>
-      <p style="font-size:2rem;">🎂❤️🧁</p>
+    <section class="dessert">
+      <h2>❤️ Red Velvet Cake</h2>
+      <p>Moist, vibrant red cake with cream cheese frosting.</p>
+      <p><strong>Recipe:</strong> Mix cocoa + buttermilk → bake → frost.</p>
+      <p class="emoji">🎂❤️🧁</p>
     </section>
 
-    <section style="margin-top:3rem;">
-      <h2 style="color:#500000; font-size:2rem;">🥧 Pecan Pie</h2>
-      <p>A Southern classic! Sweet, caramel‑like filling topped with crunchy toasted pecans.</p>
-      <p><strong>Recipe:</strong> Mix corn syrup + sugar + eggs → pour into crust → top with pecans → bake.</p>
-      <p style="font-size:2rem;">🥧🌰✨</p>
+    <section class="dessert">
+      <h2>🥧 Pecan Pie</h2>
+      <p>A Southern classic with caramel‑like filling and toasted pecans.</p>
+      <p><strong>Recipe:</strong> Mix syrup + sugar + eggs → pour → top → bake.</p>
+      <p class="emoji">🥧🌰✨</p>
     </section>
 
-    <!-- Prompt Textbox -->
-    <section style="margin-top:4rem;">
-      <h2 style="color:#500000;">Prompt Used</h2>
-      <textarea style="
-        width:100%; 
-        height:200px; 
-        padding:1rem; 
-        border:2px solid #ff8f7a; 
-        border-radius:10px; 
-        font-family:monospace; 
-        background:#fff0ed;
-        color:#500000;
-        overflow:auto;
-      ">
-Make an AI webpage: have a 3d cupcake on it, the styling has to be maroon and coral accents with an overall bubbly feel also include some information on my favorite desserts ( aka. cinammon rolls, brownies, red velevt cake, pecan pie) give each one of them a little description, recipie, and cute stickers/visuals.
+    <section class="prompt-box">
+      <h2>Prompt Used</h2>
+      <textarea readonly>
+Make an AI webpage: have a 3d cupcake on it, the styling has to be maroon and coral accents with an overall bubbly feel...
       </textarea>
     </section>
-
   </main>
 
-  <footer style="text-align:center; padding:1rem; color:#7a2e2e;">
-    &copy; 2026 Ragd
+  <footer>
+    <p>&copy; 2026 Ragd</p>
   </footer>
-
 </body>
 </html>
-
