@@ -3,35 +3,294 @@
 <head>
   <meta charset="UTF-8">
   <title>Ragd Elsaigh: AI Dessert Page</title>
-  <link id="themeStylesheet" rel="stylesheet" href="style1.css">
-  <script src="controller.js" defer></script>
+
+  <style>
+    /* ------------------ GLOBAL ------------------ */
+    body {
+      margin: 0;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      background: #fff7f5;
+      color: #4a0f0f;
+      overflow-x: hidden;
+    }
+
+    /* ------------------ FLOATING SPRINKLES ------------------ */
+    .sprinkle {
+      position: fixed;
+      width: 8px;
+      height: 20px;
+      background: #ff8f7a;
+      border-radius: 4px;
+      opacity: 0.7;
+      animation: fall 6s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    /* 20 sprinkles manually placed */
+    .sprinkle:nth-child(1) { left: 5vw; animation-delay: 0s; }
+    .sprinkle:nth-child(2) { left: 12vw; animation-delay: 1s; }
+    .sprinkle:nth-child(3) { left: 20vw; animation-delay: 2s; }
+    .sprinkle:nth-child(4) { left: 28vw; animation-delay: 0.5s; }
+    .sprinkle:nth-child(5) { left: 35vw; animation-delay: 1.5s; }
+    .sprinkle:nth-child(6) { left: 42vw; animation-delay: 2.5s; }
+    .sprinkle:nth-child(7) { left: 50vw; animation-delay: 0.8s; }
+    .sprinkle:nth-child(8) { left: 58vw; animation-delay: 1.8s; }
+    .sprinkle:nth-child(9) { left: 66vw; animation-delay: 2.8s; }
+    .sprinkle:nth-child(10) { left: 74vw; animation-delay: 0.3s; }
+    .sprinkle:nth-child(11) { left: 82vw; animation-delay: 1.3s; }
+    .sprinkle:nth-child(12) { left: 90vw; animation-delay: 2.3s; }
+    .sprinkle:nth-child(13) { left: 15vw; animation-delay: 0.6s; }
+    .sprinkle:nth-child(14) { left: 45vw; animation-delay: 1.6s; }
+    .sprinkle:nth-child(15) { left: 70vw; animation-delay: 2.6s; }
+    .sprinkle:nth-child(16) { left: 25vw; animation-delay: 0.9s; }
+    .sprinkle:nth-child(17) { left: 55vw; animation-delay: 1.9s; }
+    .sprinkle:nth-child(18) { left: 80vw; animation-delay: 2.9s; }
+    .sprinkle:nth-child(19) { left: 10vw; animation-delay: 1.2s; }
+    .sprinkle:nth-child(20) { left: 95vw; animation-delay: 2.2s; }
+
+    /* ------------------ HEADER ------------------ */
+    header {
+      background: linear-gradient(to right, #ff8f7a, #500000);
+      padding: 1rem;
+      color: white;
+    }
+
+    .nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav a, .nav span {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* ------------------ MAIN CONTAINER ------------------ */
+    .ai-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      position: relative;
+
+      /* Wavy border */
+      border: 6px solid transparent;
+      border-image: url("data:image/svg+xml;utf8,\
+      <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'>\
+      <path d='M0 10 Q 5 0 10 10 T 20 10' stroke='%23ff8f7a' fill='none' stroke-width='3'/>\
+      </svg>") 30 round;
+    }
+
+    .ai-title {
+      text-align: center;
+      color: #500000;
+      font-size: 3rem;
+      margin-top: 0;
+    }
+
+    .ai-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #7a2e2e;
+    }
+
+    /* ------------------ CSS CUPCAKE (STYLE D) ------------------ */
+    .cupcake {
+      width: 200px;
+      margin: 2rem auto;
+      position: relative;
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* Glow behind cupcake */
+    .cupcake::after {
+      content: "";
+      position: absolute;
+      top: -40px;
+      left: -40px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, #ffe3df 0%, #ffb6a9 40%, transparent 70%);
+      border-radius: 50%;
+      z-index: -1;
+      filter: blur(10px);
+      animation: glowPulse 3s infinite ease-in-out;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    /* Sparkles */
+    .cupcake::before,
+    .cupcake .sparkle {
+      content: "✨";
+      position: absolute;
+      font-size: 1.8rem;
+      animation: sparkle 2s infinite ease-in-out;
+      opacity: 0.8;
+    }
+
+    .cupcake::before { top: -10px; left: -25px; }
+    .cupcake .sparkle { top: -10px; right: -25px; }
+
+    @keyframes sparkle {
+      0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+      50% { transform: scale(1.3) rotate(20deg); opacity: 1; }
+    }
+
+    .cupcake-top {
+      width: 200px;
+      height: 120px;
+      background: radial-gradient(circle at 50% 20%, #fff0ed, #ffb6a9);
+      border-radius: 120px 120px 0 0;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      position: relative;
+    }
+
+    /* Frosting drip */
+    .cupcake-top::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 30px;
+      background: #ffb6a9;
+      border-radius: 0 0 40px 40px;
+      animation: drip 2.5s infinite ease-in-out;
+    }
+
+    @keyframes drip {
+      0%, 100% { height: 30px; }
+      50% { height: 45px; }
+    }
+
+    .cupcake-bottom {
+      width: 160px;
+      height: 120px;
+      background: linear-gradient(to bottom, #ff8f7a, #ff6f61);
+      margin: -10px auto 0;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    .cupcake-cherry {
+      position: absolute;
+      top: -25px;
+      left: 85px;
+      font-size: 2.5rem;
+      animation: wiggle 1.5s infinite ease-in-out;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(10deg); }
+    }
+
+    .cupcake-caption {
+      text-align: center;
+      color: #7a2e2e;
+      margin-top: 0.5rem;
+      font-weight: bold;
+    }
+
+    /* ------------------ DESSERT CARDS ------------------ */
+    .dessert {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      border-radius: 15px;
+      background: #fff0ed;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .dessert:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+
+    .dessert h2 {
+      color: #500000;
+      font-size: 2rem;
+      margin-top: 0;
+    }
+
+    .emoji {
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    /* ------------------ PROMPT BOX ------------------ */
+    .prompt-box textarea {
+      width: 100%;
+      height: 200px;
+      padding: 1rem;
+      border: 2px solid #ff8f7a;
+      border-radius: 10px;
+      background: #fff0ed;
+      color: #500000;
+      font-family: monospace;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: #7a2e2e;
+    }
+  </style>
 </head>
 
-<body class="ai-body">
+<body>
+
+  <!-- Floating sprinkles -->
+  <div class="sprinkle"></div><div class="sprinkle"></div><div class="sprinkle"></div><div class="sprinkle"></div>
+  <div class="sprinkle"></div><div class="sprinkle"></div><div class="sprinkle"></div><div class="sprinkle"></div>
+  <div class="sprinkle"></div><div class="sprinkle"></div><div class="sprinkle"></div><div class="sprinkle"></div>
+  <div class="sprinkle"></div><div class="sprinkle"></div><div class="sprinkle"></div><div class="sprinkle"></div>
+  <div class="sprinkle"></div><div class="sprinkle"></div><div class="sprinkle"></div><div class="sprinkle"></div>
+
   <header>
     <nav class="nav">
       <a href="landing.html">Landing</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="qualifications.html">Qualifications</a>
       <a href="services.html">Services</a>
-      <span class="current-page">AI Page</span>
-      <button id="styleToggle">Other Style</button>
+      <span>AI Page</span>
     </nav>
   </header>
 
   <main class="ai-container">
+
     <h1 class="ai-title">🍰 Dessert Wonderland 🍰</h1>
-    <p class="ai-subtitle">
-      A bubbly, sweet little corner of the internet dedicated to my favorite desserts!
-    </p>
+    <p class="ai-subtitle">A bubbly, sweet little corner of the internet dedicated to my favorite desserts!</p>
 
-    <!-- Embedded Cupcake -->
-    <section class="cupcake-section">
-      <p class="cupcake-caption">A cute cupcake to set the mood!</p>
-    </section>
-    
+    <!-- CSS Cupcake -->
+    <div class="cupcake">
+      <div class="cupcake-cherry">🍒</div>
+      <div class="cupcake-top"></div>
+      <div class="cupcake-bottom"></div>
+      <div class="sparkle"></div>
+    </div>
 
-    <!-- Desserts -->
+    <p class="cupcake-caption">A super bubbly cupcake made entirely with CSS!</p>
+
+    <!-- Dessert Cards -->
     <section class="dessert">
       <h2>🥮 Cinnamon Rolls</h2>
       <p>Soft, gooey spirals of cinnamon sugar goodness.</p>
@@ -60,16 +319,19 @@
       <p class="emoji">🥧🌰✨</p>
     </section>
 
+    <!-- Prompt -->
     <section class="prompt-box">
       <h2>Prompt Used</h2>
       <textarea readonly>
-Make an AI webpage: have a 3d cupcake on it, the styling has to be maroon and coral accents with an overall bubbly feel...
+Make an AI webpage: the styling has to be maroon and coral accents with an overall bubbly feel, add some desserts to showcase my sweet tooth and baking skills
       </textarea>
     </section>
+
   </main>
 
   <footer>
     <p>&copy; 2026 Ragd</p>
   </footer>
+
 </body>
 </html>
