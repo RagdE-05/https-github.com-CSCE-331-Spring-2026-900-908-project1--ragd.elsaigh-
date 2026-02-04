@@ -1,21 +1,42 @@
 body {
   margin: 0;
   font-family: "Segoe UI", Roboto, sans-serif;
-  background: #0d1b2a; 
-  color: #e0e6ed; 
+  background: #0a1626;
+  color: #e6ecf3;
   line-height: 1.6;
 }
-
-
 main {
   max-width: 900px;
   margin: 2rem auto;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+  position: relative;
+  overflow: hidden;
+}
+
+main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--neon-blue), var(--maroon));
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderGlow 4s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
 }
 
 
@@ -62,28 +83,27 @@ header {
 
 
 h1, h2 {
-  color: #dbe4ff;
+  color: var(--neon-blue);
   letter-spacing: 1px;
   text-transform: uppercase;
+  text-shadow: var(--neon-blue-glow);
 }
 
 h1 {
-  font-size: 2.2rem;
-  border-bottom: 2px solid #500000;
+  font-size: 2.4rem;
+  border-bottom: 2px solid var(--maroon);
   padding-bottom: 0.5rem;
 }
 
 h2 {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   margin-top: 2rem;
 }
 
-
 p, li {
-  color: #e0e6ed;
-  font-size: 1rem;
+  color: #d9e3ee;
+  font-size: 1.05rem;
 }
-
 
 .profile-pic-container {
   text-align: center;
@@ -94,8 +114,8 @@ p, li {
   max-width: 160px;
   height: auto;
   border-radius: 50%;
-  border: 4px solid #9bb1ff;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  border: 4px solid var(--neon-blue);
+  box-shadow: 0 0 20px rgba(122,184,255,0.6);
 }
 
 
@@ -136,9 +156,9 @@ li {
 
 video, iframe {
   width: 100%;
-  border-radius: 12px;
-  border: 2px solid #9bb1ff;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  border-radius: 14px;
+  border: 2px solid var(--neon-blue);
+  box-shadow: 0 0 18px rgba(122,184,255,0.5);
 }
 .center-image {
   max-width: 100%;
@@ -149,8 +169,8 @@ video, iframe {
 footer {
   text-align: center;
   padding: 1rem;
-  color: #9bb1ff;
+  color: var(--neon-blue);
   margin-top: 2rem;
   font-size: 0.9rem;
+  text-shadow: var(--neon-blue-glow);
 }
-
